@@ -47,7 +47,8 @@ public class CustomerAdapter extends BaseAdapter
 
     @Override
     public long getItemId(int i) {
-        return i;
+
+        return  i;
     }
 
     @Override
@@ -62,9 +63,9 @@ public class CustomerAdapter extends BaseAdapter
         TextView txvEmail = (TextView) rowView.findViewById(R.id.txvEmail);
         img1 = (ImageView) rowView.findViewById(R.id.avatarCustomer);
         final Customer item = this.list.get(i);
+        rowView.setTag(item.getId());
         txvEmail.setText(item.getEmail());
         txvNombre.setText(item.getFirst_name());
-        rowView.setTag(item.getId());
         String sUrl = "https://www.gravatar.com/avatar/" + Utils.md5(item.getEmail().toLowerCase());
 
         System.out.println("URL GRAVATAR " + sUrl);

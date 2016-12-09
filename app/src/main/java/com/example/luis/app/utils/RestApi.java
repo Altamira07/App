@@ -3,6 +3,7 @@ package com.example.luis.app.utils;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -68,6 +69,8 @@ public class RestApi implements Response.ErrorListener
         } else if (volleyError instanceof TimeoutError) {
             message = "Connection TimeOut! Please check your internet connection.";
         }
+        message+=volleyError.getMessage();
+
         Toast.makeText(context,message,Toast.LENGTH_LONG).show();
     }
 

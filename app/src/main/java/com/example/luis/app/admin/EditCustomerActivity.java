@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.luis.app.MainActivity;
@@ -23,9 +25,11 @@ import com.example.luis.app.utils.RestApi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.Map;
 
-public class EditCustomerActivity extends AppCompatActivity implements Response.Listener<String>
+public class EditCustomerActivity extends AppCompatActivity implements Response.Listener<JSONObject>, View.OnClickListener
 {
     private Customer customer;
     private   RequestQueue tarea;
@@ -34,6 +38,7 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
     private Button btnGuardar;
     private TextView txvEmail;
     private EditText edtFirtName,edtLastName,edtUserName,edtCountry,edtPhone,edtCity,edtState;
+    boolean opcion = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +48,7 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
         customer = new Customer(id);
         procesando = new ProgressDialog(this);
         api = new RestApi(this);
-
+        //Toast.makeText(this,"Vamo a ediat"+id,Toast.LENGTH_SHORT).show();
         txvEmail = (TextView) findViewById(R.id.txvEmail);
         edtFirtName = (EditText) findViewById(R.id.edtFirstName);
         edtLastName = (EditText) findViewById(R.id.edtLastName);
@@ -53,25 +58,20 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
         edtCity = (EditText) findViewById(R.id.edtCity);
         edtState = (EditText) findViewById(R.id.edtState);
         btnGuardar = (Button) findViewById(R.id.btnGuardar);
-
+        btnGuardar.setOnClickListener(this);
         procesando.setMessage("Cargando...");
         tarea = Volley.newRequestQueue(this);
         cargar();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        procesando = null;
-    }
 
     //Cargo los datos
     private void cargar ()
     {
         procesando.show();
-        StringRequest stringRequest
-                = new StringRequest(Request.Method.GET,
-                MainActivity.url_principal+"/wc-api/v3/customers/"+customer.getId(),
+        JsonObjectRequest jsonObjectRequest
+                = new JsonObjectRequest(Request.Method.GET,
+                MainActivity.url_principal+"/wc-api/v3/customers/"+customer.getId(),null,
                 this,api)
         {
             @Override
@@ -80,21 +80,14 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
                 return api.headers();
             }
         };
-        tarea.add(stringRequest);
+        tarea.add(jsonObjectRequest);
         tarea.start();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (procesando != null)
-            procesando.dismiss();
-    }
-    //Cargo los datos
-    @Override
-    public void onResponse(String response) {
+
+    public void data (JSONObject json)
+    {
         try {
-            JSONObject json = new JSONObject(response);
             JSONObject jsonCustomer = json.getJSONObject("customer");
 
             customer.setLast_name(jsonCustomer.getString("last_name"));
@@ -110,7 +103,6 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
         }catch (JSONException e) {
             e.printStackTrace();
         }
-        procesando.hide();
         cargarVista();
     }
     public  void  cargarVista ()
@@ -126,11 +118,52 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
     }
     private void cargaActualizacion ()
     {
-
+        customer.setFirst_name(edtFirtName.getText().toString());
+        customer.setLast_name(edtLastName.getText().toString());
+        customer.setState(edtState.getText().toString());
+        customer.setCity(edtCity.getText().toString());
+        customer.setCountry(edtCountry.getText().toString());
+        customer.setUsername(edtUserName.getText().toString());
+        customer.setPhone(edtPhone.getText().toString());
+        actualiza();
     }
     private void actualiza ()
     {
+        procesando.setMessage("Guardando...");
+        procesando.show();
+        final JSONObject jsonCustomer = customer.getJson();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT,MainActivity.url_principal+"/wc-api/v3/customers/"+customer.getId(),jsonCustomer,this,api)
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return api.headers();
+            }
 
+        };
+        tarea.add(jsonObjectRequest);
+        tarea.start();
     }
 
+    @Override
+    public void onClick(View view)
+    {
+        if (view.getId() == R.id.btnGuardar) {
+            opcion = false;
+            cargaActualizacion();
+
+        }
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        if (opcion)
+        {
+            data(response);
+            procesando.hide();
+        }else{
+            procesando.cancel();
+            procesando = null;
+            finish();
+        }
+    }
 }

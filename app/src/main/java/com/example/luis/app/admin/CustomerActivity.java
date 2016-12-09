@@ -2,8 +2,10 @@ package com.example.luis.app.admin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -43,6 +45,7 @@ public class CustomerActivity extends AppCompatActivity implements Response.List
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
         procesando = new ProgressDialog(this);
+        procesando.setMessage("Cargando...");
         list = (ListView) findViewById(R.id.listCustomer);
         list.setOnItemClickListener(this);
         listCustomer = new ArrayList<>();
@@ -100,8 +103,24 @@ public class CustomerActivity extends AppCompatActivity implements Response.List
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
     {
         Intent intent = new Intent(this,EditCustomerActivity.class);
-        intent.putExtra("id",i);
+        int id = Integer.parseInt(view.getTag().toString());
+        intent.putExtra("id",id);
         startActivity(intent);
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        list.setAdapter(null);
+        listCustomer.clear();
+        cargar();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        procesando.cancel();
+        procesando = null;
     }
 }

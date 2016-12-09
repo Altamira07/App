@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //edtEmail = (EditText) findViewById(R.id.edtEmail);
         //edtPassword = (EditText) findViewById(R.id.edtPassword);
         btnLogin.setOnClickListener(this);
-        progressDialog.setMessage("Cargando");
+        progressDialog.setMessage("Cargando...");
         //prueba = (TextView) findViewById(R.id.prueba);
     }
 

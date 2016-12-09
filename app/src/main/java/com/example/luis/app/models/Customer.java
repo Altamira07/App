@@ -1,5 +1,8 @@
 package com.example.luis.app.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by luis on 8/12/16.
  */
@@ -17,6 +20,35 @@ public class Customer
     private String phone;
     private String city;
 
+    public Customer(int id, String created_at, String email, String first_name, String username, String avatar_url) {
+        this.id = id;
+        this.created_at = created_at;
+        this.email = email;
+        this.first_name = first_name;
+        this.username = username;
+        this.avatar_url = avatar_url;
+    }
+    public JSONObject getJson()
+    {
+        JSONObject object = new JSONObject();
+        JSONObject customer = new JSONObject();
+        JSONObject bilding = new JSONObject();
+        try {
+            customer.put("first_name",first_name);
+            customer.put("last_name",last_name);
+            customer.put("username",username);
+            bilding.put("country",country);
+            bilding.put("phone",phone);
+            bilding.put("state",state);
+            bilding.put("city",city);
+            customer.put("billing_address",bilding);
+            object.put("customer",customer);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return object;
+    }
     public String getState() {
         return state;
     }
@@ -58,15 +90,6 @@ public class Customer
     }
 
     private String state;
-
-    public Customer(int id, String created_at, String email, String first_name, String username, String avatar_url) {
-        this.id = id;
-        this.created_at = created_at;
-        this.email = email;
-        this.first_name = first_name;
-        this.username = username;
-        this.avatar_url = avatar_url;
-    }
 
     public Customer(int id) {
         this.id = id;
