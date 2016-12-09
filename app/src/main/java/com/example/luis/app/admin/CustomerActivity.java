@@ -1,10 +1,14 @@
 package com.example.luis.app.admin;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -26,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CustomerActivity extends AppCompatActivity implements Response.Listener<String>
+public class CustomerActivity extends AppCompatActivity implements Response.Listener<String>,AdapterView.OnItemClickListener
 {
     private List<Customer> listCustomer;
     private CustomerAdapter adapter;
@@ -40,13 +44,14 @@ public class CustomerActivity extends AppCompatActivity implements Response.List
         setContentView(R.layout.activity_customer);
         procesando = new ProgressDialog(this);
         list = (ListView) findViewById(R.id.listCustomer);
+        list.setOnItemClickListener(this);
         listCustomer = new ArrayList<>();
 
         tarea =  Volley.newRequestQueue(this);
         api = new RestApi(this);
-        load();
+        cargar();
     }
-    private void load()
+    private void cargar()
     {
         procesando.show();
         StringRequest stringRequest = new StringRequest(Request.Method.GET,  MainActivity.url_principal+"/wc-api/v3/customers",this,api)
@@ -89,5 +94,14 @@ public class CustomerActivity extends AppCompatActivity implements Response.List
         adapter = new CustomerAdapter(this,listCustomer);
         list.setAdapter(adapter);
         procesando.hide();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+    {
+        Intent intent = new Intent(this,EditCustomerActivity.class);
+        intent.putExtra("id",i);
+        startActivity(intent);
+
     }
 }

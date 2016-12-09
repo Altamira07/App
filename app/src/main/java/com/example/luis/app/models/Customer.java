@@ -7,7 +7,57 @@ package com.example.luis.app.models;
 public class Customer
 {
     private int id;
-    private String created_at,email,first_name,username,avatar_url;
+    private String created_at;
+    private String email;
+    private String first_name;
+    private String username;
+    private String avatar_url;
+    private String last_name;
+    private String country;
+    private String phone;
+    private String city;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    private String state;
 
     public Customer(int id, String created_at, String email, String first_name, String username, String avatar_url) {
         this.id = id;
@@ -16,6 +66,10 @@ public class Customer
         this.first_name = first_name;
         this.username = username;
         this.avatar_url = avatar_url;
+    }
+
+    public Customer(int id) {
+        this.id = id;
     }
 
     public int getId() {
