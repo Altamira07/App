@@ -19,7 +19,9 @@
         </activity>
         <activity android:name=".admin.AdminActivity" />
         <activity android:name=".admin.CustomerActivity" />
-        <activity android:name=".admin.EditCustomerActivity"></activity>
+        <activity android:name=".admin.EditCustomerActivity" />
+        <activity android:name=".admin.ProductActivity" />
+        <activity android:name=".admin.EditProductActivity"></activity>
     </application>
 
 </manifest>
