@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.luis.app.R;
 
@@ -16,7 +15,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.a_activity_admin);
         btnClientes = (Button) findViewById(R.id.btnClientes);
         btnClientes.setOnClickListener(this);
         btnProducts = (Button) findViewById(R.id.btnProducts);

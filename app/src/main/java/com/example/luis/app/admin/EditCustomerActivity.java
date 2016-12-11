@@ -8,14 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.luis.app.MainActivity;
 import com.example.luis.app.R;
@@ -25,8 +23,6 @@ import com.example.luis.app.utils.RestApi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class EditCustomerActivity extends AppCompatActivity implements Response.Listener<JSONObject>, View.OnClickListener
@@ -42,7 +38,7 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_customer);
+        setContentView(R.layout.a_activity_edit_customer);
         Intent intent = this.getIntent();
         int id = intent.getIntExtra("id",-1);
         customer = new Customer(id);

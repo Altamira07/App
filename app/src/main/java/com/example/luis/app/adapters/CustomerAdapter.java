@@ -7,14 +7,12 @@ import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.luis.app.R;
-import com.example.luis.app.admin.CustomerActivity;
 import com.example.luis.app.models.Customer;
 import com.example.luis.app.utils.Utils;
 
@@ -57,7 +55,7 @@ public class CustomerAdapter extends BaseAdapter
         if (rowView == null)
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.list_customers,null);
+            rowView = inflater.inflate(R.layout.a_list_customers,null);
         }
         TextView txvNombre = (TextView) rowView.findViewById(R.id.txvNombre);
         TextView txvEmail = (TextView) rowView.findViewById(R.id.txvEmail);

@@ -2,15 +2,11 @@ package com.example.luis.app.admin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -43,7 +39,7 @@ public class CustomerActivity extends AppCompatActivity implements Response.List
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer);
+        setContentView(R.layout.a_activity_customer);
         procesando = new ProgressDialog(this);
         procesando.setMessage("Cargando...");
         list = (ListView) findViewById(R.id.listCustomer);

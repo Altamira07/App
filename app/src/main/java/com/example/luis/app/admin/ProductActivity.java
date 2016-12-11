@@ -45,7 +45,7 @@ public class ProductActivity extends AppCompatActivity implements Response.Liste
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.a_activity_product);
         procesando = new ProgressDialog(this);
         listPorduct = new ArrayList<>();
         api = new RestApi(this);

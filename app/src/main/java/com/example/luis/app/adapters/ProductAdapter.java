@@ -54,7 +54,7 @@ public class ProductAdapter extends BaseAdapter
         if (rowView == null)
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.list_products,null);
+            rowView = inflater.inflate(R.layout.a_list_products,null);
         }
         TextView txvTitle = (TextView) rowView.findViewById(R.id.txvTitle);
         TextView txvPrice = (TextView) rowView.findViewById(R.id.txvPrice);
