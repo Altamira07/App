@@ -29,14 +29,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, Response.ErrorListener,Response.Listener<String>{
-    private Button btnLogin;
+public class MainActivity extends AppCompatActivity implements Response.ErrorListener,Response.Listener<String>,View.OnClickListener{
     private  EditText edtEmail,edtPassword;
     private String url = "https://storeitc-luisitoaltamira.rhcloud.com/auth_users.php";
     public static final String url_principal = "https://storeitc-luisitoaltamira.rhcloud.com";
     private RequestQueue tarea;
     private ProgressDialog progressDialog;
     private String session = "";
+    private Button btnLogueate;
     //TextView prueba;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +44,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         tarea = Volley.newRequestQueue(this);
         progressDialog = new ProgressDialog(this);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-
+        btnLogueate = (Button) findViewById(R.id.btnLogin);
+        btnLogueate.setOnClickListener(this);
         //edtEmail = (EditText) findViewById(R.id.edtEmail);
         //edtPassword = (EditText) findViewById(R.id.edtPassword);
-        btnLogin.setOnClickListener(this);
         progressDialog.setMessage("Cargando...");
         //prueba = (TextView) findViewById(R.id.prueba);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.btnLogin:
-                login();
-                break;
-        }
-    }
+
     //Hace petecion del login
     private  void login () {
         progressDialog.show();
@@ -132,5 +123,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         session = response;
         progressDialog.hide();
         auth();
+    }
+
+    @Override
+    public void onClick(View view) {
+        login();
     }
 }

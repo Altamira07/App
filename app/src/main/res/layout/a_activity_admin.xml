@@ -27,4 +27,13 @@
         android:layout_below="@+id/btnClientes"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Categorias productos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCategory"
+        android:layout_below="@+id/btnProducts"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
