@@ -34,9 +34,6 @@ public class RestApi implements Response.ErrorListener
             cs = "cs_0b6239dded2cbf1bc56bbbae5a49e913842123b9";
     private Context context;
 
-    private String json ="";
-    private RequestQueue tarea;
-    ProgressDialog progressDialog;
     public RestApi(Context context)
     {
         this.context = context;

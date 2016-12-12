@@ -36,4 +36,13 @@
         android:layout_below="@+id/btnProducts"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Agregar un nuevo cupon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCategory"
+        android:layout_alignParentStart="true"
+        android:id="@+id/btnAddCoupon"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

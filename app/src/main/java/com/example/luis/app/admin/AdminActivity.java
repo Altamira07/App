@@ -11,7 +11,7 @@ import com.example.luis.app.R;
 public class AdminActivity extends AppCompatActivity implements View.OnClickListener
 {
 
-    private Button btnClientes,btnProducts,btnCategory;
+    private Button btnClientes,btnProducts,btnCategory,btnAddCoupon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,8 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         btnProducts.setOnClickListener(this);
         btnCategory = (Button) findViewById(R.id.btnCategory);
         btnCategory.setOnClickListener(this);
+        btnAddCoupon = (Button) findViewById(R.id.btnAddCoupon);
+        btnAddCoupon.setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +41,10 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnCategory:
                 i = new Intent(this,CategoryActivity.class);
+                startActivity(i);
+                break;
+            case  R.id.btnAddCoupon:
+                i = new Intent(this,AddCouponActivity.class);
                 startActivity(i);
                 break;
         }
