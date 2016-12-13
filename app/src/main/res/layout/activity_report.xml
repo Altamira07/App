@@ -72,11 +72,23 @@
             android:layout_height="wrap_content"
             android:id="@+id/txvTotalOrdenes" />
 
-        <Button
-            android:text="Graficar"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnGraficar" />
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text="Grafica pastel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPastel" />
+
+            <Button
+                android:text="Grafica de barras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnBarras" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/listSalesReport"
