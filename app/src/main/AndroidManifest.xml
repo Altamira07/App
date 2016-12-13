@@ -25,7 +25,8 @@
         <activity android:name=".admin.CategoryActivity" />
         <activity android:name=".admin.EditCategoryActivity" />
         <activity android:name=".admin.AddCouponActivity" />
-        <activity android:name=".admin.ReportActivity"></activity>
+        <activity android:name=".admin.ReportActivity" />
+        <activity android:name=".admin.ReportGenerateActivity"></activity>
     </application>
 
 </manifest>

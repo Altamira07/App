@@ -12,6 +12,12 @@
         <item>fixed_product</item>
         <item>percent_product</item>
     </string-array>
+    <string-array name="spnPeriod">
+        <item>week</item>
+        <item>month</item>
+        <item>last_month</item>
+        <item>year</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
