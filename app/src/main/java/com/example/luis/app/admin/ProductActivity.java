@@ -6,8 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ProductActivity extends AppCompatActivity implements Response.Listener<JSONObject>,AdapterView.OnItemLongClickListener,DialogInterface.OnClickListener
+public class ProductActivity extends AppCompatActivity implements View.OnClickListener,Response.Listener<JSONObject>,AdapterView.OnItemLongClickListener,DialogInterface.OnClickListener
 {
 
     private ProgressDialog procesando;
@@ -42,6 +45,7 @@ public class ProductActivity extends AppCompatActivity implements Response.Liste
     private RequestQueue tarea;
     private String item;
     private int opcion = 1;
+    private Button btnAddProduct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,8 @@ public class ProductActivity extends AppCompatActivity implements Response.Liste
         procesando = new ProgressDialog(this);
         listPorduct = new ArrayList<>();
         api = new RestApi(this);
+        btnAddProduct = (Button) findViewById(R.id.btnAddProduct);
+        btnAddProduct.setOnClickListener(this);
         list = (ListView) findViewById(R.id.listProduct);
         list.setOnItemLongClickListener(this);
         tarea = Volley.newRequestQueue(this);
@@ -171,5 +177,15 @@ public class ProductActivity extends AppCompatActivity implements Response.Liste
         listPorduct.clear();
         cargar();
 
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btnAddProduct)
+        {
+            Intent i = new Intent(this,AddProductActivity.class);
+            startActivity(i);
+        }
     }
 }

@@ -33,7 +33,7 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
     private RestApi api;
     private Button btnGuardar;
     private TextView txvEmail;
-    private EditText edtFirtName,edtLastName,edtUserName,edtCountry,edtPhone,edtCity,edtState;
+    private EditText edtFirtName,edtLastName,edtUserName,edtCountry,edtPhone,edtCity,edtState,edtAddress;
     boolean opcion = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,9 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
         edtPhone = (EditText) findViewById(R.id.edtPhone);
         edtCity = (EditText) findViewById(R.id.edtCity);
         edtState = (EditText) findViewById(R.id.edtState);
+        edtAddress = (EditText) findViewById(R.id.edtAddress);
         btnGuardar = (Button) findViewById(R.id.btnGuardar);
+
         btnGuardar.setOnClickListener(this);
         procesando.setMessage("Cargando...");
         tarea = Volley.newRequestQueue(this);
@@ -96,6 +98,7 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
             customer.setState(jsonBiladdr.getString("state"));
             customer.setCountry(jsonBiladdr.getString("country"));
             customer.setPhone(jsonBiladdr.getString("phone"));
+            customer.setAddress(jsonBiladdr.getString("address_1"));
         }catch (JSONException e) {
             e.printStackTrace();
         }
@@ -111,6 +114,7 @@ public class EditCustomerActivity extends AppCompatActivity implements Response.
         edtUserName.setText(customer.getUsername());
         edtPhone.setText(customer.getPhone());
         txvEmail.setText(customer.getEmail());
+        edtAddress.setText(customer.getAddress());
     }
     private void cargaActualizacion ()
     {

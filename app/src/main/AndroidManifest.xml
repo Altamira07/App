@@ -28,7 +28,9 @@
         <activity android:name=".admin.ReportActivity" />
         <activity android:name=".admin.ReportGenerateActivity" />
         <activity android:name=".admin.PastelActivity" />
-        <activity android:name=".admin.BarrasActivity"></activity>
+        <activity android:name=".admin.BarrasActivity" />
+        <activity android:name=".admin.AddProductActivity" />
+        <activity android:name=".admin.AddCategoryActivity"></activity>
     </application>
 
 </manifest>

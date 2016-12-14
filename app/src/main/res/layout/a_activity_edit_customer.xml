@@ -48,16 +48,6 @@
         android:hint="Username" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtUserName"
-        android:layout_marginTop="12dp"
-        android:id="@+id/txvEmail"
-        android:layout_alignParentEnd="true"
-        tools:text="Email" />
-
-    <TextView
         android:text="Country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,28 +55,6 @@
         android:layout_marginTop="20dp"
         android:id="@+id/textView5"
         android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/txvEmail"
-        android:id="@+id/edtCountry"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView2"
-        android:hint="Country" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:layout_below="@+id/edtCountry"
-        android:layout_alignStart="@+id/edtCountry"
-        android:id="@+id/edtPhone"
-        android:layout_alignParentEnd="true"
-        android:hint="Phone" />
 
     <TextView
         android:text="phone"
@@ -106,18 +74,6 @@
         android:layout_marginTop="23dp"
         android:id="@+id/textView7" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/edtCity"
-        android:layout_alignBaseline="@+id/textView7"
-        android:layout_alignBottom="@+id/textView7"
-        android:layout_alignStart="@+id/edtPhone"
-        android:layout_alignParentEnd="true"
-        android:hint="Name" />
-
     <TextView
         android:text="State"
         android:layout_width="wrap_content"
@@ -126,27 +82,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="18dp"
         android:id="@+id/textView8" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/edtCity"
-        android:id="@+id/edtState"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/edtUserName"
-        android:hint="State" />
-
-    <Button
-        android:text="Guardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtState"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="26dp"
-        android:id="@+id/btnGuardar"
-        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -169,4 +104,83 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnGuardar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtState"
+        android:layout_alignEnd="@+id/textView6"
+        android:layout_marginTop="12dp"
+        android:id="@+id/textView20" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvEmail"
+        tools:text="Email"
+        android:layout_below="@+id/edtUserName"
+        android:layout_alignStart="@+id/textView6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtCountry"
+        android:hint="Country"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/edtPhone"
+        android:hint="Phone"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtCity"
+        android:hint="Name"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtState"
+        android:hint="State"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtAddress"
+        android:hint="Address"
+        android:layout_alignBaseline="@+id/textView20"
+        android:layout_alignBottom="@+id/textView20"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

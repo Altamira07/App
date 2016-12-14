@@ -19,7 +19,7 @@ public class Customer
     private String country;
     private String phone;
     private String city;
-
+    private String address;
     public Customer(int id, String created_at, String email, String first_name, String username, String avatar_url) {
         this.id = id;
         this.created_at = created_at;
@@ -28,6 +28,15 @@ public class Customer
         this.username = username;
         this.avatar_url = avatar_url;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public JSONObject getJson()
     {
         JSONObject object = new JSONObject();

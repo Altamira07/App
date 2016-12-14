@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CategoryActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Base, AdapterView.OnItemLongClickListener,DialogInterface.OnClickListener{
+public class CategoryActivity extends AppCompatActivity implements Response.Listener<JSONObject>,View.OnClickListener, Base, AdapterView.OnItemLongClickListener,DialogInterface.OnClickListener{
 
     private RequestQueue tarea;
     private ProgressDialog procesando;
@@ -41,6 +42,7 @@ public class CategoryActivity extends AppCompatActivity implements Response.List
     private ListView listView;
     private CategoryAdapter adapter;
     private boolean opcion;
+    private Button btnAddCategory;
     private String item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,9 @@ public class CategoryActivity extends AppCompatActivity implements Response.List
         listView = (ListView)findViewById(R.id.listCategory);
         list = new ArrayList<>();
         opcion = true;
+        btnAddCategory = (Button) findViewById(R.id.btnAddCategory);
 
+        btnAddCategory.setOnClickListener(this);
         listView.setOnItemLongClickListener(this);
         cargar();
     }
@@ -175,5 +179,14 @@ public class CategoryActivity extends AppCompatActivity implements Response.List
         list.clear();
         cargar();
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btnAddCategory)
+        {
+            Intent i = new Intent(this,AddCategoryActivity.class);
+            startActivity(i);
+        }
     }
 }
